@@ -1,14 +1,16 @@
 import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
-
+import Button from './Components/Button';
 function App() {
-
+  const [query, setQuery] = useState('');
   function callPokeapi(){
-    axios.get('https://pokeapi.co/api/v2/pokemon/')
+    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=40')
       .then(function (response) {
         // handle success
-        console.log(response.data.results);
+        console.log(JSON.stringify(response.data.results)); 
+        setQuery(JSON.stringify(response.data.results))
       })
       .catch(function (error) {
         // handle error
@@ -21,19 +23,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button onClick={callPokeapi}>Get Pokemon</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/16.png"} className="App-logo" alt="logo" />
+        <Button onClick={callPokeapi} text={"Get pokemon"}/>
+        <p>{query}</p>
       </header>
     </div>
   );
