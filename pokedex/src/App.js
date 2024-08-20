@@ -7,7 +7,7 @@ import Card from './Components/Card';
 function App() {
   const [query, setQuery] = useState([]);
   const [currentNum, setCurrentNum]=useState(0)
-  const [currnet, setCurrnet] = useState('https://pokeapi.co/api/v2/pokemon/?limit=40&offset=20');
+  const [currnet, setCurrnet] = useState('https://pokeapi.co/api/v2/pokemon/?limit=40');
   const [next, setNext]= useState('');
   const [prev, setPrev]= useState('');
   const [offset, setOffset]= useState(0)
@@ -51,7 +51,7 @@ function App() {
       <header className="App-header">
         <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/16.png"} className="App-logo" alt="logo" />
         <Button onClick={()=>callPokeapi(currnet)} text={"Get pokemon"}/>
-        <div>
+        <div className='pokemon-list-wrapper'>
         {query.map((pokemon, index) => {
                         let name = pokemon.name;
                         console.log('pokemon', pokemon)

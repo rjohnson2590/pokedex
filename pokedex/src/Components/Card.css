@@ -2,9 +2,11 @@
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
+    flex-basis: 30%;
 }
 
 .card-item{
     align-items: center;
     display: flex;
+    justify-content: center;
 }
