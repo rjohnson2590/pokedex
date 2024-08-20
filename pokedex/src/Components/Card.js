@@ -36,6 +36,13 @@ const Card=(props)=> {
     return(
         <div className='card-container'>
          <p className='card-item' key={props.index}>{props.name}-<img src={img}/></p>
+            <p>weight - {weight}</p>
+            <p>height - {height}</p>
+            {types.length > 1 ?
+                <p>{types[0]}, {types[1]}</p>
+                :
+                <p>{types[0]}</p>
+            }
          </div>
     );
 }
