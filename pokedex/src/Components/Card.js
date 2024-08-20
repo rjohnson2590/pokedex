@@ -35,6 +35,7 @@ const Card=(props)=> {
     }, [props.url]);
     return(
         <div className='card-container'>
+            <a onClick={props.click}>
          <p className='card-item' key={props.index}>{props.name}-<img src={img}/></p>
             <p>weight - {weight}</p>
             <p>height - {height}</p>
@@ -43,6 +44,7 @@ const Card=(props)=> {
                 :
                 <p>{types[0]}</p>
             }
+            </a>
          </div>
     );
 }

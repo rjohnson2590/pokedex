@@ -11,6 +11,8 @@ function App() {
   const [next, setNext]= useState('');
   const [prev, setPrev]= useState('');
   const [offset, setOffset]= useState(0)
+  const [showModal, setShowModal]= useState(false)
+  const [modalPoke, setModalPoke] = useState({})
   function callPokeapi(val){ 
     console.log(val)
     console.log('next',next);
@@ -46,23 +48,32 @@ function App() {
         // always executed
       });
   }
+
+  function showModalFunc(poke){
+    console.log('poke',poke)
+    let val =showModal;
+    setShowModal(!val);
+    setModalPoke(poke)
+  }
   return (
     <div className="App">
       <header className="App-header">
         <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/16.png"} className="App-logo" alt="logo" />
         <Button onClick={()=>callPokeapi(currnet)} text={"Get pokemon"}/>
         <div className='pokemon-list-wrapper'>
-        {query.map((pokemon, index) => {
-                        let name = pokemon.name;
-                        console.log('pokemon', pokemon)
-                        return <Card key={index} name={name} url={pokemon.url} />
-            })}
-            </div>
+          {query.map((pokemon, index) => {
+                          let name = pokemon.name;
+                          console.log('pokemon', pokemon)
+                          return <Card key={index} name={name} url={pokemon.url} click={() => showModalFunc(pokemon)}/>
+              })}
+        </div>
+       
        <div>
        <Button onClick={()=>callPokeapi(prev)} text={"Previos"}/>
        <Button onClick={()=>callPokeapi(next)} text={"Next"}/>
        </div>
       </header>
+      {showModal ? <Card index={1} name={modalPoke.name} url={modalPoke.url}/> : <></>}
     </div>
   );
 }
