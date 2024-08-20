@@ -57,8 +57,10 @@ function App() {
   }
   return (
     <div className="App">
+      <div className={showModal? "modal-true" : ""}>
       <header className="App-header">
         <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/16.png"} className="App-logo" alt="logo" />
+        </header>
         <Button onClick={()=>callPokeapi(currnet)} text={"Get pokemon"}/>
         <div className='pokemon-list-wrapper'>
           {query.map((pokemon, index) => {
@@ -72,8 +74,8 @@ function App() {
        <Button onClick={()=>callPokeapi(prev)} text={"Previos"}/>
        <Button onClick={()=>callPokeapi(next)} text={"Next"}/>
        </div>
-      </header>
-      {showModal ? <Card index={1} name={modalPoke.name} url={modalPoke.url}/> : <></>}
+       </div>
+      {showModal ? <div className="modal-container"><Card index={1} name={modalPoke.name} url={modalPoke.url}/></div> : <></>}
     </div>
   );
 }
