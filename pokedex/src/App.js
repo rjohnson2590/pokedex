@@ -33,21 +33,21 @@ function App() {
         // always executed
       });
   }
-  function callPokeapiPage(){ 
-    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=40&offset=')
-      .then(function (response) {
-        // handle success
-        console.log(response.data.results); 
-        setQuery(response.data.results);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
-  }
+  // function callPokeapiPage(){ 
+  //   axios.get('https://pokeapi.co/api/v2/pokemon/?limit=40&offset=')
+  //     .then(function (response) {
+  //       // handle success
+  //       console.log(response.data.results); 
+  //       setQuery(response.data.results);
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     })
+  //     .finally(function () {
+  //       // always executed
+  //     });
+  // }
 
   function showModalFunc(poke){
     console.log('poke',poke)
@@ -57,7 +57,7 @@ function App() {
   }
   return (
     <div className="App">
-      <div className={showModal? "modal-true" : ""}>
+      <div className={showModal? "modal-true app-wrapper" : "app-wrapper"}>
       <header className="App-header">
         <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/16.png"} className="App-logo" alt="logo" />
         </header>

@@ -11,3 +11,7 @@
     display: flex;
     justify-content: center;
 }
+
+.modal-container .card-container{
+    background: #ACCAF2;
+}

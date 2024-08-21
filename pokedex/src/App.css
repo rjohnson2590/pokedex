@@ -27,6 +27,12 @@
   z-index: 1;
 }
 
+.app-wrapper{
+  position: fixed;
+    overflow: scroll;
+    height: 100%;
+}
+
 .App-header {
   
 }

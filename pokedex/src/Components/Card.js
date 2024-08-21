@@ -27,6 +27,7 @@ const Card=(props)=> {
                     return type;
                 });
                 setTypes(typesList);
+                console.log('here', props.name)
             })
             .catch((error) => {
                 console.log(error);
