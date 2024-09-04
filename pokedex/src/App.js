@@ -62,6 +62,9 @@ function App() {
         <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-iii/firered-leafgreen/16.png"} className="App-logo" alt="logo" />
         </header>
         <Button onClick={()=>callPokeapi(currnet)} text={"Get pokemon"}/>
+        <div>
+          <label for="search">Search for a Pokemon:</label>
+          <input name="Search"></input></div>
         <div className='pokemon-list-wrapper'>
           {query.map((pokemon, index) => {
                           let name = pokemon.name;
