@@ -14,6 +14,7 @@ function App() {
   const [showModal, setShowModal]= useState(false)
   const [modalPoke, setModalPoke] = useState({})
   const [searchQuery, setSearchQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
   function callPokeapi(val){ 
     console.log(val)
     console.log('next',next);
@@ -53,12 +54,13 @@ function App() {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       // Do something with the input value, e.g., submit it to an API
-      //callPokeapi("https://pokeapi.co/api/v2/pokemon/"+ searchQuery +"/")
+     
       axios.get("https://pokeapi.co/api/v2/pokemon/"+ searchQuery +"/")
+      //callPokeapi("https://pokeapi.co/api/v2/pokemon/"+ searchQuery +"/")
       .then(function (response) {
         // handle success
         console.log('search', response.data); 
-        
+        setShowSearch(true)
       })
       .catch(function (error) {
         // handle error
@@ -91,11 +93,14 @@ function App() {
             onKeyPress={handleKeyPress}
           ></input></div>
         <div className='pokemon-list-wrapper'>
-          {query.map((pokemon, index) => {
+          {!showSearch ? query.map((pokemon, index) => {
                           let name = pokemon.name;
                           console.log('pokemon', pokemon)
                           return <Card key={index} name={name} url={pokemon.url} click={() => showModalFunc(pokemon)}/>
-              })}
+              }): 
+               <Card key={1} name={searchQuery} url={"https://pokeapi.co/api/v2/pokemon/"+ searchQuery +"/"} click={() => showModalFunc(searchQuery)}/>
+
+              }
         </div>
        
        <div>
